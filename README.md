@@ -15,7 +15,7 @@ phone's GPS chip and local SQLite storage -- no cloud round-trip, no server call
 can silently fail because the boat is out of signal range. Free's own manifest doesn't even
 request the `INTERNET` permission.
 
-Developed by [Trozovka](https://github.com/Trozovka).
+Developed by **John Winsome Munar** ([Trozovka](https://github.com/Trozovka) on GitHub).
 
 ## Screenshots
 
@@ -111,5 +111,5 @@ under the MIT license below.
 
 MIT -- see [LICENSE](LICENSE) for the full text.
 
-Copyright (c) 2026 Trozovka. Original Author: Trozovka. All derivative works must retain the
+Copyright (c) 2026 John Winsome Munar (Trozovka). Original Author: John Winsome Munar (Trozovka). All derivative works must retain the
 [NOTICE](NOTICE) file's attribution. Not a fork of, or derived from, any other project's source.
