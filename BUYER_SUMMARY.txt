@@ -1,0 +1,1 @@
+A personal voyage data recorder for Android: records your track offline, marks incidents, exports GPX/NMEA. Free.
