@@ -91,7 +91,7 @@ adb install app/build/outputs/apk/debug/app-debug.apk
   existing installs keep updating.
 - The foreground-service/wake-lock/battery-exemption pattern and the Gumroad licence pattern come from
   [trozovka-android-toolkit](https://github.com/Trozovka/trozovka-android-toolkit) as a git submodule, shared with
-  [OpenCPN GPS Server](https://github.com/Trozovka/opencpn-gps-server-free).
+  [GPS Server for OpenCPN](https://github.com/Trozovka/gps-server-for-opencpn-free).
 - minSdk 26, target latest stable Android API.
 - Not a fork. The closest existing app (BasicAirData/GPSLogger) is GPL-3.0, which would force the private Pro
   source open, and does not have the incident/voyage/export model, so this was built from scratch.
