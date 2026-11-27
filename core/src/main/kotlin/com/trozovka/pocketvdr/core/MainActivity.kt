@@ -1,5 +1,7 @@
 package com.trozovka.pocketvdr.core
 
+import com.trozovka.pocketvdr.core.ui.TrozovkaTheme
+import androidx.activity.enableEdgeToEdge
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -53,8 +55,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         preferences = AppPreferences(applicationContext)
         repository = VoyageRepository(applicationContext)
+        enableEdgeToEdge(statusBarStyle = androidx.activity.SystemBarStyle.dark(android.graphics.Color.TRANSPARENT))
         setContent {
-            MaterialTheme {
+            TrozovkaTheme {
                 var screen by remember { mutableStateOf<Screen>(Screen.Main) }
                 BackHandler(enabled = screen != Screen.Main) { screen = Screen.Main }
 

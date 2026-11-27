@@ -1,5 +1,7 @@
 package com.trozovka.pocketvdr.core.ui
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -75,6 +77,7 @@ fun ReviewScreen(voyageId: Long, onBack: () -> Unit, onVoyageDeleted: () -> Unit
     Scaffold(
         topBar = {
             TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = TealBar, titleContentColor = Color.White, navigationIconContentColor = Color.White, actionIconContentColor = Color.White),
                 title = { Text("Voyage review") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {

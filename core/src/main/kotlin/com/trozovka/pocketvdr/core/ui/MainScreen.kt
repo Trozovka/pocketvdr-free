@@ -1,5 +1,8 @@
 package com.trozovka.pocketvdr.core.ui
 
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -85,15 +88,15 @@ fun MainScreen(
 
     Surface(modifier = Modifier.fillMaxSize()) {
         // safeDrawingPadding: newer Android draws apps under the status/navigation bars (edge-to-edge).
-        Column(modifier = Modifier.fillMaxSize().safeDrawingPadding()) {
+        Column(modifier = Modifier.fillMaxSize().navigationBarsPadding()) {
         // Header: app name centered and bold, version small below, Settings gear on the right.
-        Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp)) {
+        Box(modifier = Modifier.fillMaxWidth().background(TealBar).statusBarsPadding().padding(horizontal = 8.dp, vertical = 6.dp)) {
             Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(appDisplayName(context), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                Text("v${appVersionName(context)}", style = MaterialTheme.typography.bodySmall)
+                Text(appDisplayName(context), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold, color = Color.White)
+                Text("v${appVersionName(context)}", style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.8f))
             }
             IconButton(onClick = onOpenSettings, modifier = Modifier.align(Alignment.CenterEnd)) {
-                Icon(Icons.Filled.Settings, contentDescription = "Settings")
+                Icon(Icons.Filled.Settings, contentDescription = "Settings", tint = Color.White)
             }
         }
         Column(

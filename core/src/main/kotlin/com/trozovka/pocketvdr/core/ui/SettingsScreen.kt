@@ -1,5 +1,7 @@
 package com.trozovka.pocketvdr.core.ui
 
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -56,6 +58,7 @@ fun SettingsScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = TealBar, titleContentColor = Color.White, navigationIconContentColor = Color.White, actionIconContentColor = Color.White),
                 title = { Text("Settings") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
@@ -120,6 +123,7 @@ private fun HowToScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = TealBar, titleContentColor = Color.White, navigationIconContentColor = Color.White, actionIconContentColor = Color.White),
                 title = { Text("How to use") },
                 navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.Filled.ArrowBack, contentDescription = "Back") } },
             )
