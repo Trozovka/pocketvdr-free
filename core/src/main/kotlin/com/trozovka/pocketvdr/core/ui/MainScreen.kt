@@ -1,6 +1,7 @@
 package com.trozovka.pocketvdr.core.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,7 +9,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -76,14 +83,25 @@ fun MainScreen(
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize()) {
+        // Header: app name centered and bold, version small below, Settings gear on the right.
+        Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp)) {
+            Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(appDisplayName(context), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+                Text("v${appVersionName(context)}", style = MaterialTheme.typography.bodySmall)
+            }
+            IconButton(onClick = onOpenSettings, modifier = Modifier.align(Alignment.CenterEnd)) {
+                Icon(Icons.Filled.Settings, contentDescription = "Settings")
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Text("PocketVDR", style = MaterialTheme.typography.headlineMedium)
             Text(
                 "Not a type-approved VDR or S-VDR under SOLAS. No legal evidentiary standing. " +
                     "Personal record-keeping only.",
@@ -132,29 +150,6 @@ fun MainScreen(
             TextButton(onClick = onViewVoyages, modifier = Modifier.padding(top = 12.dp)) {
                 Text("View past voyages")
             }
-            TextButton(onClick = onOpenSettings) {
-                Text("Settings")
-            }
-
-            HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
-
-            Text("About", style = MaterialTheme.typography.titleSmall)
-            Text(
-                "${appDisplayName(context)} v${appVersionName(context)}",
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(top = 4.dp),
-            )
-            Text(
-                "PocketVDR is a personal voyage data recorder -- it logs your position, speed, " +
-                    "heading, and altitude offline throughout a voyage, so you have a real record " +
-                    "of what happened without needing a network connection.",
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
-            )
-            Text(
-                "Developed by Trozovka -- github.com/Trozovka",
-                style = MaterialTheme.typography.bodySmall,
-            )
 
             if (statusMessage.isNotBlank()) {
                 Text(
@@ -175,6 +170,7 @@ fun MainScreen(
                     Text("Dismiss")
                 }
             }
+        }
         }
     }
 
