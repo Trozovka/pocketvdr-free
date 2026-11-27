@@ -2,6 +2,7 @@ package com.trozovka.pocketvdr.core.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -83,7 +84,8 @@ fun MainScreen(
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        // safeDrawingPadding: newer Android draws apps under the status/navigation bars (edge-to-edge).
+        Column(modifier = Modifier.fillMaxSize().safeDrawingPadding()) {
         // Header: app name centered and bold, version small below, Settings gear on the right.
         Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp)) {
             Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -100,7 +102,7 @@ fun MainScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Top,
         ) {
             Text(
                 "Not a type-approved VDR or S-VDR under SOLAS. No legal evidentiary standing. " +
